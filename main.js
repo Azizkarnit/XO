@@ -27,6 +27,9 @@ let place6 = document.getElementById('place6');
 let place7 = document.getElementById('place7');
 let place8 = document.getElementById('place8');
 let place9 = document.getElementById('place9');
+let menus = document.getElementById('menus');
+let p1s = document.getElementById('player1side');
+let p2s = document.getElementById('player2side');
 let places = ['','','','','','','','','']
 let greyO = `<img src='items/greyO.png' class='Os'>`;
 let whiteX = `<img src='items/whiteX.png' class='Xs'>`;
@@ -56,20 +59,19 @@ function containertoggle(){
     pns.classList.toggle('bright')
     player1.classList.toggle('bright')
     player2.classList.toggle('bright')
+    p1s.classList.toggle('bright')
+    p2s.classList.toggle('bright')
 }
 function playPause(){
     if(count == 0){
         count = 1;
-        audio.pause();
-        img2.style.display = ''
-    }else{
-        count=0;
         audio.play();
         img2.style.display = 'none'
+    }else{
+        count=0;
+        audio.pause();
+        img2.style.display = ''
     }
-}
-function autostart(){
-    audio.play();
 }
 function imgChanger(){
     if(img_count === 0){
@@ -83,6 +85,7 @@ function imgChanger(){
     }
 }
 function menuClose(){
+    menus.style.display = 'none'
     menu.style.display = 'none'
     container.classList.remove('none')
 }
@@ -145,87 +148,172 @@ function friend(){
     place7.setAttribute('onclick','play7()')
     place8.setAttribute('onclick','play8()')
     place9.setAttribute('onclick','play9()')
+    p1s.style.display = ''
+    p2s.style.display = ''
+    startcolorchange()
+}
+let red;
+let blue;
+function colorchange(){
+    if (color_count == 1) {
+        if((random % 2) == 1){
+            red = setTimeout(() => {
+                p1s.style.backgroundColor = '#926015'
+                setTimeout(() => {
+                    p1s.style.backgroundColor = '#d28717'
+                }, 800);
+            }, 800);
+        }else if((random % 2) == 0){
+            blue = setTimeout(() => {
+                p2s.style.backgroundColor = '#327058'
+                setTimeout(() => {
+                    p2s.style.backgroundColor = '#5eb090'
+                }, 800);
+            }, 800);
+        }else{}
+    }else{
+        if((random % 2) == 1){
+            red = setTimeout(() => {
+                p1s.style.backgroundColor = 'rgb(94, 0, 0)'
+                setTimeout(() => {
+                    p1s.style.backgroundColor = 'rgb(116, 0, 0)'
+                }, 800);
+            }, 800);
+        }else if((random % 2) == 0){
+            blue = setTimeout(() => {
+                p2s.style.backgroundColor = 'rgb(0, 0, 100)'
+                setTimeout(() => {
+                    p2s.style.backgroundColor = 'rgb(0, 0, 160)'
+                }, 800);
+            }, 800);
+        }else{}
+    }
+    
+}
+let win1;
+let win2;
+function win(){
+    clearInterval(change)
+    if((random % 2) == 0){
+        win1 = setTimeout(() => {
+            p1s.style.backgroundColor = 'gold'
+            setTimeout(() => {
+                p1s.style.backgroundColor = 'yellow'
+            }, 800);
+        }, 800);
+    }else if((random % 2) == 1){
+        win2 = setTimeout(() => {
+            p2s.style.backgroundColor = 'gold'
+            setTimeout(() => {
+                p2s.style.backgroundColor = 'yellow'
+            }, 800);
+        }, 800);
+    }else{}
+}
+let change;
+function startcolorchange(){
+setTimeout(() => {
+    change = setInterval(() => {
+        colorchange()
+    }, 1601);
+}, ((random*100)-1000));
 }
 function WinLoseDraw(){
     if(places[0] == 'X' && places[1] == 'X' && places[2] == 'X'){
         pns.innerHTML = 'Player X wins'
         p1w++
         player1.innerText = `Player X wins = ${p1w}`
+        win()
         closeoff()
     }else if (places[3] == 'X' && places[4] == 'X' && places[5] == 'X') {
         pns.innerHTML = 'Player X wins'
         p1w++
         player1.innerText = `Player X wins = ${p1w}`
+        win()
         closeoff()
     }else if (places[6] == 'X' && places[7] == 'X' && places[8] == 'X') {
         pns.innerHTML = 'Player X wins'
         p1w++
         player1.innerText = `Player X wins = ${p1w}`
+        win()
         closeoff()
     }else if (places[0] == 'O' && places[1] == 'O' && places[2] == 'O') {
         pns.innerHTML = 'Player O wins'
         p2w++
         player2.innerText = `Player O wins = ${p2w}`
+        win()
         closeoff()
     }else if (places[3] == 'O' && places[4] == 'O' && places[5] == 'O') {
         pns.innerHTML = 'Player O wins'
         p2w++
         player2.innerText = `Player O wins = ${p2w}`
+        win()
         closeoff()
     }else if (places[6] == 'O' && places[7] == 'O' && places[8] == 'O') {
         pns.innerHTML = 'Player O wins'
         p2w++
         player2.innerText = `Player O wins = ${p2w}`
+        win()
         closeoff()
     }else if (places[0] == 'X' && places[3] == 'X' && places[6] == 'X') {
         pns.innerHTML = 'Player X wins'
         p1w++
         player1.innerText = `Player X wins = ${p1w}`
+        win()
         closeoff()
     }else if (places[1] == 'X' && places[4] == 'X' && places[7] == 'X') {
         pns.innerHTML = 'Player X wins'
         p1w++
         player1.innerText = `Player X wins = ${p1w}`
+        win()
         closeoff()
     }else if (places[2] == 'X' && places[5] == 'X' && places[8] == 'X') {
         pns.innerHTML = 'Player X wins'
         p1w++
         player1.innerText = `Player X wins = ${p1w}`
+        win()
         closeoff()
     }else if (places[0] == 'O' && places[3] == 'O' && places[6] == 'O') {
         pns.innerHTML = 'Player O wins'
         p2w++
         player2.innerText = `Player O wins = ${p2w}`
+        win()
         closeoff()
     }else if (places[1] == 'O' && places[4] == 'O' && places[7] == 'O') {
         pns.innerHTML = 'Player O wins'
         p2w++
         player2.innerText = `Player O wins = ${p2w}`
+        win()
         closeoff()
     }else if (places[2] == 'O' && places[5] == 'O' && places[8] == 'O') {
         pns.innerHTML = 'Player O wins'
         p2w++
         player2.innerText = `Player O wins = ${p2w}`
+        win()
         closeoff()
     }else if (places[0] == 'X' && places[4] == 'X' && places[8] == 'X') {
         pns.innerHTML = 'Player X wins'
         p1w++
         player1.innerText = `Player X wins = ${p1w}`
+        win()
         closeoff()
     }else if (places[2] == 'X' && places[4] == 'X' && places[6] == 'X') {
         pns.innerHTML = 'Player X wins'
         p1w++
         player1.innerText = `Player X wins = ${p1w}`
+        win()
         closeoff()
     }else if (places[0] == 'O' && places[4] == 'O' && places[8] == 'O') {
         pns.innerHTML = 'Player O wins'
         p2w++
         player2.innerText = `Player O wins = ${p2w}`
+        win()
         closeoff()
     }else if (places[2] == 'O' && places[4] == 'O' && places[6] == 'O') {
         pns.innerHTML = 'Player O wins'
         p2w++
         player2.innerText = `Player O wins = ${p2w}`
+        win()
         closeoff()
     }else if(places[0] !== '' && places[1] !== '' && places[2] !== '' && places[3] !== '' && places[4] !== '' && places[5] !== '' && places[6] !== '' && places[7] !== '' && places[8] !== ''){
         pns.innerHTML = "it's a Draw"
@@ -246,7 +334,10 @@ function closeoff(){
         setTimeout(() => {
             container.classList.add('none')
             closemenu.classList.remove('none')
-        }, 4000);
+            menus.style.display = ''
+            p1s.classList.add('none')
+            p2s.classList.add('none')
+        }, 4001);
 }
 function play1(){
     if ( (random % 2)== 0){

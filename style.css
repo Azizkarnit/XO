@@ -15,11 +15,16 @@ body
 body.active{
     background:#d9d9d9;
 }
-.music_dark{
+.darktoggle{
     z-index: 99;
-    width: 100%;
+    width: 10%;
     height: 20vh;
-    position:fixed;
+    float:right;
+    position:relative;
+}
+.musictoggle{
+    position: fixed;
+    width: 10%;
 }
 #toggle{
     position:relative;
@@ -104,10 +109,8 @@ body.active{
     border-radius: 50px;
     box-shadow: 2px 2px 5px 5px rgba(255,255,255,0.25);
 }
-
 #start_menu h1,#close_menu h2{
     text-align: center;
-    padding: 15px;
     font-size: 3rem;
     color: #ff5757;
 }
@@ -117,24 +120,6 @@ body.active{
     color: #ff5757;
     padding-left: 15px;
     font-size: 2rem;
-}
-.btns{
-    position: relative;
-    float: right;
-    top: 5%;
-    right: 10%;
-    width: 60%;
-}
-#btn_friend,#btn_bot,#btn_again,#btn_quit{
-    display: block;
-    font-size: 1.25rem;
-    padding: 10px;
-    width: 100%;
-    margin-block: 50px;
-    cursor: pointer;
-    border-radius: 15px;
-    background-color: #737373;
-    border: 5px solid #545454;
 }
 #btn_friend:hover,#btn_bot:hover,#btn_again:hover,#btn_quit:hover{
     background-color: #a6a6a6;
@@ -225,7 +210,6 @@ body.active{
     top: 5%;
     width: 45%;
     aspect-ratio: 1/1;
-    margin: auto;
 }
 .place{
     width: 100%;
@@ -257,4 +241,218 @@ body.active{
     top: 5%;
     right: 10%;
     width: 60%;
+}
+@media screen and (min-device-width: 451px){
+    #board{
+        margin: auto;
+    }
+    #start_menu h1,#close_menu h2{
+        padding: 15px;
+    }
+    .btns{
+        position: relative;
+        float: right;
+        top: 5%;
+        right: 10%;
+        width: 60%;
+    }
+    #btn_friend,#btn_bot,#btn_again,#btn_quit{
+        display: block;
+        font-size: 1.25rem;
+        padding: 10px;
+        width: 100%;
+        margin-block: 50px;
+        cursor: pointer;
+        border-radius: 15px;
+        background-color: #737373;
+        border: 5px solid #545454;
+    }
+}
+@media screen and (orientation:landscape) and
+(min-device-width: 320px) and (max-device-width: 450px) {
+    #toggle{
+        position:relative;
+        display:block;
+        float:right;
+        top: 15px;
+        right: 15px;
+        width: 100%;
+        height:60%;
+        border-radius:50px;
+        background:rgb(85, 85, 85);
+        transition:0.5s;
+        cursor:pointer;
+        box-shadow: inset 0 8px 60px rgba(0,0,0,0.1),
+                    inset 0 8px 8px rgba(0,0,0,0.1),
+                    inset 0 -4px 4px rgba(0,0,0,0.1);
+    }
+    #toggle .indicator{
+        position:absolute;
+        top:0;
+        Left:0;
+        width:50%;
+        height:100%;
+        background:linear-gradient(to bottom,rgb(47, 0, 101),rgb(108, 6, 172));
+        border-radius:50%;
+        transform:scale(0.9);
+        box-shadow:0 8px 40px rgba(0,0,0,0.5),
+                inset 4px 4px rgba(255,255,255,0.2),
+                inset 9 -4px 4px rgba(255,255,255,0.2);
+        transition:0.5s;
+    }
+    #menus{
+        top: -5%;
+        position: relative;
+        width: 70%;
+        height: 100vh;
+        margin: auto;
+    }
+    #start_menu,#close_menu{
+        position: absolute;
+        background-color: black;
+        border: 5px solid #737373;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        box-shadow: 2px 2px 5px 5px rgba(255,255,255,0.25);
+    }
+    #start_menu h1,#close_menu h2{
+        padding: 5px;
+    }
+    #start_menu h3{
+        position: relative;
+        top: 5%;
+        color: #ff5757;
+        padding-left: 15px;
+        font-size: 2rem;
+    }
+    .btns{
+        position: relative;
+        float: right;
+        top: 10%;
+        right: 10%;
+        width: 60%;
+        min-height: 10vh;
+        max-height: 50vh;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 20%;
+    }
+    #btn_friend,#btn_bot,#btn_again,#btn_quit{
+        font-size: 1.25rem;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 15px;
+        background-color: #737373;
+        border: 5px solid #545454;
+    }
+    #container{
+        position: relative;
+        width: 90%;
+        margin: auto;
+        height: inherit;
+    }
+    #play_now_screen{
+        position: relative;
+        top: 3%;
+        background-color: black;
+        border: 10px solid #5e17eb;
+        border-radius: 15px;
+        width: 70%;
+        margin: auto;
+        padding-block: 5px;
+        font-size: 2rem;
+        color: #ff5757;
+        text-align: center;
+    }
+    #XO{
+        position: relative;
+        top: 5px;
+        width: 30px;
+        height: 30px;
+        transform:rotate(45deg);
+    }
+    #players{
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        top: 30%;
+        width: 90%;
+    }
+    #player1side{
+        position:fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 50%;
+        height: 100vh;
+        background-color: rgb(116, 0, 0);
+    }
+    #player1side.bright{
+        background-color: #d28717;
+    }
+    #player2side{
+        position:fixed;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        width: 50%;
+        height: 100vh;
+        background-color: rgb(0, 0, 160);
+    }
+    #player2side.bright{
+        background-color: #5eb090;
+    }
+    #player1,#player2{
+        display: inline-block;
+        width: 25%;
+        background-color: black;
+        border: 10px solid #5e17eb;
+        border-radius: 15px;
+        color: #ff5757;
+        text-align: center;
+        font-size: 2rem;
+        padding: 1%;
+    }
+    #player1{
+        transform:rotate(90deg);
+    }
+    #player2{
+        transform:rotate(-90deg);
+    }
+    #board{
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3 , 1fr);
+        gap: 5%;
+        top: 5%;
+        width: 40%;
+        aspect-ratio: 1/1;
+        left: 30%;
+    }
+    .close_btns{
+        position: relative;
+        top: 20%;
+        right: 10%;
+        width: 60%;
+        min-height: 25vh;
+        max-height: 75vh;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 30%;
+    }
+    #close_menu h2{
+        position: relative;
+        top: 5%;
+    }
+    #btn_again,#btn_quit{
+        font-size: 2rem;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 15px;
+        background-color: #737373;
+        border: 5px solid #545454;
+    }
 }

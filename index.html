@@ -7,18 +7,18 @@
   <link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>
   <link rel="icon" href="items/XO.png" type="image/icon type">
 </head>
-<body onmouseover="autostart()">
-    <div class="music_dark"><div id="toggle" onclick="ImgChange()">
+<body>
+    <div class="darktoggle"><div id="toggle" onclick="ImgChange()">
     <i class="indicator"></i>
-    </div>
+    </div></div><div class="musictoggle">
     <div id="music" class="bright" onclick="playPause()">
         <img src="./items/music.png" alt=" music logo" id="img_music">
-        <img src="./items/blocked.png" alt="block logo" id="img_block" style="display: none;">
+        <img src="./items/blocked.png" alt="block logo" id="img_block">
         <div id="on" class="dark">
     <audio id="audio" loop preload="auto"> 
         <source  src="items/chill.mp3" type="audio/mpeg">
     </audio>
-    </div></div></div>
+    </div></div></div><div id="menus">
     <div id="start_menu">
         <h1>Welcome to Tic Tac Toe Minigame</h1>
         <h3>Play mode :</h3>
@@ -26,6 +26,12 @@
         <button id="btn_friend" onclick="menuClose(),startloop(),friend()">Play with a friend</button>
         <button id="btn_bot" onclick="menuClose(),startloop()">Play with a bot</button></div>
     </div>
+    <div id="close_menu" class="none">
+        <h2>Want to play again ?</h2>
+        <div class="close_btns">
+        <button id="btn_again" onclick="playagain()">Play again</button>
+        <button id="btn_quit" onclick="closeMe()">Quit game</button></div>
+    </div></div><div id="player1side" style="display: none;"></div><div id="player2side"  style="display: none;"></div>
     <div id="container" class="none">
         <div id="play_now_screen"><img src="items/blueO.png" id="XO"> Play now
         <audio src="items/tick.mp3" id="tick"></audio></div>
@@ -40,12 +46,6 @@
         <div id="place7" class="place"></div>
         <div id="place8" class="place"></div>
         <div id="place9" class="place"></div></div>
-    </div>
-    <div id="close_menu" class="none">
-        <h2>Want to play again ?</h2>
-        <div class="close_btns">
-        <button id="btn_again" onclick="playagain()">Play again</button>
-        <button id="btn_quit" onclick="closeMe()">Quit game</button></div>
     </div>
     <script src="main.js"></script>
 
