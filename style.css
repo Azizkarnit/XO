@@ -242,7 +242,7 @@ body.active{
     right: 10%;
     width: 60%;
 }
-@media screen and (min-device-width: 451px){
+@media screen and (min-device-width: 768px){
     #board{
         margin: auto;
     }
@@ -269,7 +269,7 @@ body.active{
     }
 }
 @media screen and (orientation:landscape) and
-(min-device-width: 320px) and (max-device-width: 450px) {
+(min-device-width: 320px) and (max-device-width: 767px) {
     #toggle{
         position:relative;
         display:block;
